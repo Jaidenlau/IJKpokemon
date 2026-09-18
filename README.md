@@ -1,19 +1,24 @@
-# IJK 南青山 — website
+# IJKpokemon — website
 
-First iteration of the public site for IJK, a Pokémon TCG shop in Minamiaoyama,
-Tokyo, supplying sealed and single Japanese product to overseas buyers.
+Public site for IJKpokemon, a Pokémon TCG shop in Tokyo that supplies sealed,
+single and graded Japanese product to buyers overseas.
 
 Japanese is the primary language on every page; a short English line sits under
 each Japanese one so overseas buyers can read it without the layout getting busy.
+
+Live: https://ijkpokemon-production.up.railway.app
 
 ## Pages
 
 | Route | Tab | Purpose |
 | --- | --- | --- |
 | `/` | ホーム / Home | Hero, why-us, founding story, main shop address |
-| `/supply.html` | 卸売・仕入れ / Supply | Product categories, how an order works, export tax note |
-| `/team.html` | チーム / Team | The team (placeholder names + photos) |
-| `/contact.html` | お問い合わせ / Contact | Phone, email, address, hours, enquiry form |
+| `/supply.html` | 取扱商品 / Supply | The four formats we supply, order process, export tax note |
+| `/team.html` | チーム / Team | Leadership, plus a separate note on the AI assistant |
+| `/contact.html` | お問い合わせ / Contact | Phone/LINE, email, address, hours, enquiry form |
+
+There is deliberately **no catalogue or price list** — stock moves daily and
+everything is quoted per enquiry, so every product card routes to Contact.
 
 ## Running locally
 
@@ -26,32 +31,60 @@ PORT=8080 npm start
 
 ## Deploying to Railway
 
-1. Create a new Railway project from this GitHub repo.
-2. Railway detects Node, runs `npm start`, and injects `PORT` — `server.js`
-   reads it, so no configuration is needed.
-3. Add your custom domain under the service's **Settings → Networking**.
+Railway detects Node, runs `npm start`, and injects `PORT` — `server.js` reads
+it, so no configuration is needed. `railway.json` pins the builder and start
+command. Pushing to the default branch redeploys.
 
-`railway.json` pins the builder and start command so the deploy is reproducible.
+## Editing
 
-## What still needs real values
+Each page is standalone HTML. The header and footer are **duplicated across all
+five HTML files** (`index`, `supply`, `team`, `contact`, `404`) — a change to the
+nav, the brand lockup or the footer contact details has to be made in each one.
+That is the tradeoff for having no build step.
 
-Everything below is a deliberate placeholder:
-
-- **Phone numbers** — `+81 (0)3-0000-0000`, `+852 0000 0000` (footers + `contact.html`)
-- **Email addresses** — `info@example.com`, `wholesale@example.com`
-  (also `data-mailto` on the form in `contact.html`)
-- **Opening hours** — `contact.html`
-- **Team names, roles, bios, photos** — `team.html`; see `public/images/team/README.md`
-- **MOQ figures** — `supply.html` product cards read "MOQ — placeholder"
-- **Form backend** — the form currently opens the visitor's mail app. Point it at
-  a real endpoint in `public/js/contact-form.js`.
-- **Shop photo / map embed** — `index.html` has a styled placeholder panel with a
-  comment marking the spot.
-
-## Theme
+### Theme
 
 All colours are CSS custom properties at the top of `public/css/style.css`.
-Changing the six palette values there re-skins the whole site.
+Changing the palette values there re-skins the whole site.
 
 Fonts: Shippori Mincho (Japanese headings), Noto Sans JP (body), Jost (Latin
 labels), all from Google Fonts.
+
+### Artwork
+
+`public/images/art/*.svg` are hand-built line drawings — a sealed box, a card
+fan, a graded slab, sleeves and binders — drawn to match the line weight of the
+IJKpokemon logo. They deliberately contain **no Pokémon artwork, card faces,
+logos or character names**, because the site is commercial and that material is
+The Pokémon Company's IP.
+
+They are stand-ins for photographs. Replace them with photos of your own stock
+whenever you have them — real inventory photos convert better and are yours to
+use freely:
+
+- **Category art** — `supply.html`, swap each `.product-thumb > img` src
+- **Hero** — `index.html`, the `.hero-art > img`
+- **Shop front** — `index.html`, replace the inner `<div>` of `.photo-slot`
+  with `<img src="/images/shopfront.jpg" alt="IJKpokemon 本店">`
+- **Team portraits** — see `public/images/team/README.md`
+
+`public/images/ijkpokemon-logo.webp` is the supplied gold-on-black logo. It is
+used as the Open Graph preview image. The header and footer draw the ball mark
+as inline SVG instead, so it inherits the brand colour and reads on the light
+background — the gold gradient would be near-invisible on peach.
+
+## What still needs real values
+
+- **Opening hours** — `contact.html`, currently 11:00–20:00 weekdays, marked as
+  placeholder on the page itself
+- **Team portraits** — monogram tiles stand in; the tiles are designed to look
+  intentional, so there is no rush
+- **Second Japanese address** — the site says "a second location in Japan" on
+  the home page without naming it; only the Minamiaoyama address is published
+- **Form backend** — the form opens the visitor's mail app. Point it at a real
+  endpoint in `public/js/contact-form.js`
+- **Custom domain** — `robots.txt` and `sitemap.xml` currently point at the
+  Railway subdomain
+
+Confirmed and live: brand name, contact email, phone/LINE number, team names and
+titles, the Minamiaoyama address.

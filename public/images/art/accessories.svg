@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" role="img" aria-label="Sleeves, deck case and binder">
+  <defs>
+    <linearGradient id="accA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffaf6"/><stop offset="1" stop-color="#ffe3d2"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="#c26a45" stroke-width="1.6" stroke-linejoin="round">
+    <!-- binder, open-spine block -->
+    <polygon points="96,88 176,72 176,204 96,220" fill="url(#accA)"/>
+    <polygon points="176,72 200,80 200,212 176,204" fill="#ffe3d2"/>
+    <path d="M104 104 168 92" opacity=".3"/>
+    <path d="M104 190 168 178" opacity=".3"/>
+    <!-- deck case -->
+    <polygon points="216,108 282,108 282,208 216,208" fill="#fffaf6"/>
+    <polygon points="216,108 282,108 304,88 238,88" fill="url(#accA)"/>
+    <polygon points="282,108 304,88 304,188 282,208" fill="#ffe3d2"/>
+    <path d="M216 130h66" opacity=".4"/>
+    <!-- sleeves, thin stack -->
+    <g opacity=".75">
+      <rect x="298" y="128" width="46" height="70" rx="4" fill="#fffaf6"/>
+      <rect x="304" y="122" width="46" height="70" rx="4" fill="#fffaf6"/>
+    </g>
+    <!-- ball motif on binder face -->
+    <circle cx="136" cy="146" r="14"/>
+    <path d="M122 149h28"/>
+    <circle cx="136" cy="146" r="4.6"/>
+  </g>
+</svg>

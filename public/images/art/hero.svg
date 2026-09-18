@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="86 34 398 368" role="img" aria-label="Sealed box, graded slab and fanned cards">
+  <defs>
+    <linearGradient id="hFace" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffdfb"/><stop offset="1" stop-color="#ffeadb"/>
+    </linearGradient>
+    <linearGradient id="hTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff8f2"/><stop offset="1" stop-color="#f9cdb3"/>
+    </linearGradient>
+    <linearGradient id="hCard" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffdfb"/><stop offset="1" stop-color="#ffe3d2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- oversized ball motif, echoes the logo -->
+  <g fill="none" stroke="#c26a45" stroke-width="1.4" opacity=".28">
+    <circle cx="300" cy="212" r="176"/>
+    <path d="M124 212h352"/>
+    <circle cx="300" cy="212" r="48"/>
+    <circle cx="300" cy="212" r="17"/>
+  </g>
+
+  <g fill="none" stroke="#c26a45" stroke-width="1.7" stroke-linejoin="round">
+    <!-- graded slab, back left -->
+    <g transform="rotate(-13 150 250)" opacity=".85">
+      <rect x="96" y="150" width="104" height="164" rx="9" fill="url(#hFace)"/>
+      <rect x="105" y="159" width="86" height="28" rx="4" fill="#ffe3d2"/>
+      <path d="M113 169h44" opacity=".45"/>
+      <rect x="108" y="196" width="80" height="108" rx="5" fill="#fffaf6"/>
+      <circle cx="148" cy="238" r="10"/><path d="M138 238h20"/><circle cx="148" cy="238" r="3.4"/>
+      <path d="M116 272h64" opacity=".35"/>
+      <path d="M116 284h44" opacity=".25"/>
+    </g>
+
+    <!-- card fan, centre -->
+    <g transform="rotate(-20 262 268)" opacity=".9">
+      <rect x="214" y="186" width="96" height="136" rx="8" fill="url(#hCard)"/>
+    </g>
+    <g transform="rotate(-6 262 268)">
+      <rect x="214" y="180" width="96" height="136" rx="8" fill="#fffdfb"/>
+      <rect x="224" y="190" width="76" height="60" rx="4" fill="#ffe3d2" opacity=".72"/>
+      <circle cx="262" cy="220" r="11"/><path d="M251 220h22"/><circle cx="262" cy="220" r="3.8"/>
+      <path d="M224 264h76" opacity=".42"/>
+      <path d="M224 276h56" opacity=".28"/>
+      <path d="M224 288h66" opacity=".28"/>
+    </g>
+
+    <!-- sealed box, right -->
+    <polygon points="326,196 424,196 424,332 326,332" fill="url(#hFace)"/>
+    <polygon points="326,196 424,196 456,168 358,168" fill="url(#hTop)"/>
+    <polygon points="424,196 456,168 456,304 424,332" fill="#ffe3d2"/>
+    <path d="M326 240h98" opacity=".5"/>
+    <path d="M326 252h98" opacity=".28"/>
+    <circle cx="375" cy="222" r="12"/><path d="M363 222h24"/><circle cx="375" cy="222" r="4"/>
+    <path d="M352 196 372 332" opacity=".18"/>
+    <path d="M400 196 412 332" opacity=".14"/>
+  </g>
+</svg>

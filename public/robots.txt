@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-# Update to the real domain once it is live.
-Sitemap: https://example.com/sitemap.xml
+# Update to your custom domain when you point one at Railway.
+Sitemap: https://ijkpokemon-production.up.railway.app/sitemap.xml

@@ -102,20 +102,17 @@ a { color: var(--clay-deep); text-decoration: none; }
   height: 78px;
 }
 
-.brand { display: flex; align-items: baseline; gap: 10px; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand svg { width: 30px; height: 30px; flex: 0 0 auto; color: var(--clay); }
 .brand-mark {
   font-family: var(--latin);
-  font-size: 1.5rem;
-  font-weight: 500;
-  letter-spacing: 0.3em;
+  font-size: 1.32rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   color: var(--clay-deep);
+  white-space: nowrap;
 }
-.brand-sub {
-  font-family: var(--jp-serif);
-  font-size: 0.82rem;
-  letter-spacing: 0.22em;
-  color: var(--ink-faint);
-}
+.brand-mark b { font-weight: 500; letter-spacing: 0.1em; }
 
 .nav { display: flex; align-items: center; gap: 4px; }
 .nav a {
@@ -179,18 +176,17 @@ a { color: var(--clay-deep); text-decoration: none; }
     linear-gradient(180deg, var(--peach-100) 0%, var(--peach-50) 100%);
   overflow: hidden;
 }
-.hero::after {
-  /* soft ring motif, echoes a poké-ball without being literal */
-  content: '';
-  position: absolute;
-  right: -160px; top: -120px;
-  width: 520px; height: 520px;
-  border-radius: 50%;
-  border: 1px solid rgba(194, 106, 69, 0.18);
-  box-shadow: inset 0 0 0 40px rgba(255, 255, 255, 0.35);
-  pointer-events: none;
+.hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.26fr 0.74fr;
+  gap: 40px;
+  align-items: center;
 }
-.hero-inner { position: relative; z-index: 1; max-width: 760px; }
+.hero-inner { max-width: 660px; }
+.hero-art { justify-self: center; width: 100%; max-width: 500px; }
+.hero-art img { width: 100%; height: auto; }
 
 .eyebrow {
   display: inline-flex;
@@ -218,9 +214,9 @@ a { color: var(--clay-deep); text-decoration: none; }
 .hero h1 {
   font-family: var(--jp-serif);
   font-weight: 500;
-  font-size: clamp(2rem, 5.4vw, 3.5rem);
-  line-height: 1.5;
-  letter-spacing: 0.04em;
+  font-size: clamp(1.85rem, 4.4vw, 2.8rem);
+  line-height: 1.52;
+  letter-spacing: 0.02em;
   margin: 0 0 18px;
   color: var(--ink);
 }
@@ -486,17 +482,18 @@ a { color: var(--clay-deep); text-decoration: none; }
 }
 .product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
 .product-thumb {
-  height: 168px;
+  height: 210px;
   display: grid;
   place-items: center;
-  font-family: var(--latin);
-  font-size: 2.1rem;
-  color: var(--clay-deep);
-  letter-spacing: .04em;
-  background: linear-gradient(140deg, var(--peach-100) 0%, var(--peach-300) 100%);
+  padding: 16px;
+  background:
+    radial-gradient(360px 200px at 50% 40%, #fffdfb 0%, transparent 70%),
+    linear-gradient(140deg, var(--peach-100) 0%, var(--peach-200) 100%);
   border-bottom: 1px solid var(--line);
 }
+.product-thumb img { width: 100%; height: 100%; object-fit: contain; }
 .product-body { padding: 26px 24px 28px; display: flex; flex-direction: column; flex: 1; }
+.product-body > p:last-of-type { margin-bottom: 22px; }
 .product-body h3 {
   font-family: var(--jp-serif);
   font-weight: 500;
@@ -505,6 +502,8 @@ a { color: var(--clay-deep); text-decoration: none; }
 }
 .product-body p { color: var(--ink-soft); font-size: 0.9rem; margin: 12px 0 0; }
 .product-meta {
+  /* margin-top:auto pins this row to the card bottom so it lines up across
+     the row regardless of how long each description runs. */
   margin-top: auto;
   padding-top: 20px;
   display: flex;
@@ -512,7 +511,6 @@ a { color: var(--clay-deep); text-decoration: none; }
   justify-content: space-between;
   gap: 12px;
   border-top: 1px solid var(--line);
-  margin-top: 22px;
 }
 .product-meta .moq {
   font-family: var(--latin);
@@ -583,27 +581,33 @@ a { color: var(--clay-deep); text-decoration: none; }
 .member:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
 .member-photo {
   aspect-ratio: 4 / 5;
-  background: linear-gradient(150deg, var(--peach-200) 0%, var(--peach-400) 100%);
+  background:
+    radial-gradient(240px 200px at 50% 38%, #fffdfb 0%, transparent 72%),
+    linear-gradient(155deg, var(--peach-100) 0%, var(--peach-300) 100%);
   display: grid;
   place-items: center;
   position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
 }
 .member-photo img { width: 100%; height: 100%; object-fit: cover; }
-.member-photo .initials {
-  font-family: var(--jp-serif);
-  font-size: 2.6rem;
-  color: #fff;
-  letter-spacing: 0.08em;
-  text-shadow: 0 2px 10px rgba(156, 79, 48, .3);
-}
-.member-photo .ph-note {
+
+/* Monogram tile used until real portraits go in: initials over a faint
+   ball motif, so the card reads as designed rather than as a gap. */
+.member-photo .ball {
   position: absolute;
-  bottom: 12px;
-  font-family: var(--latin);
-  font-size: 0.6rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.85);
+  width: 78%; height: auto;
+  color: var(--clay);
+  opacity: .16;
+}
+.member-photo .initials {
+  position: relative;
+  font-family: var(--jp-serif);
+  font-size: 2.1rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--clay-deep);
+  padding-left: 0.14em;
 }
 .member-body { padding: 24px 24px 28px; }
 .member-body h3 {
@@ -877,4 +881,95 @@ a { color: var(--clay-deep); text-decoration: none; }
   .stats { grid-template-columns: 1fr; }
   .btn { width: 100%; }
   .brand-sub { display: none; }
+}
+
+/* ==========================================================================
+   Additions — brand lockup on the footer, leadership grid, AI note block
+   ========================================================================== */
+
+.footer-brand { display: flex; align-items: center; gap: 11px; margin-bottom: 14px; }
+.footer-brand svg { width: 26px; height: 26px; color: var(--clay); flex: 0 0 auto; }
+.footer-brand span {
+  font-family: var(--latin);
+  font-size: 1.05rem;
+  letter-spacing: 0.03em;
+  color: var(--clay-deep);
+}
+.footer-brand span b { font-weight: 500; letter-spacing: 0.09em; }
+
+/* Four-across leadership row that drops to 2 then 1 */
+.grid-team { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+/* Smaller, clearly-separate card for the non-human team entry */
+.aside-card {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 26px;
+  align-items: start;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  box-shadow: var(--shadow-sm);
+}
+.aside-card .tile {
+  position: relative;
+  width: 96px; height: 96px;
+  border-radius: var(--radius-sm);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(120px 100px at 50% 40%, #fffdfb 0%, transparent 72%),
+    linear-gradient(155deg, var(--peach-100) 0%, var(--peach-300) 100%);
+  border: 1px solid var(--line);
+}
+.aside-card .tile svg { position: absolute; width: 76%; color: var(--clay); opacity: .18; }
+.aside-card .tile span {
+  position: relative;
+  font-family: var(--jp-serif);
+  font-size: 1.5rem;
+  color: var(--clay-deep);
+  letter-spacing: 0.1em;
+  padding-left: 0.1em;
+}
+.aside-card h3 {
+  font-family: var(--jp-serif);
+  font-weight: 500;
+  font-size: 1.06rem;
+  margin: 0 0 2px;
+}
+.aside-card p { color: var(--ink-soft); font-size: 0.9rem; margin: 10px 0 0; }
+
+/* Supply page: four wide category cards, art-led */
+.grid-supply { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+/* Photo slot for the shop front — swap the inner note for an <img> */
+.photo-slot {
+  position: relative;
+  min-height: 340px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 28px;
+  background:
+    radial-gradient(420px 260px at 50% 40%, #fffdfb 0%, transparent 72%),
+    linear-gradient(140deg, var(--peach-100) 0%, var(--peach-300) 100%);
+}
+.photo-slot img { width: 100%; height: 100%; object-fit: cover; }
+.photo-slot .slot-art { width: 88%; max-width: 330px; margin: 0 auto 10px; opacity: .92; }
+.photo-slot .note { font-size: 0.86rem; color: var(--clay-deep); margin: 0; }
+
+@media (max-width: 1100px) {
+  .grid-team, .grid-supply { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+  .hero-art { order: -1; max-width: 340px; }
+  .hero-inner { max-width: none; }
+}
+@media (max-width: 600px) {
+  .grid-team, .grid-supply { grid-template-columns: 1fr; }
+  .aside-card { grid-template-columns: 1fr; gap: 18px; padding: 24px; }
+  .aside-card .tile { width: 76px; height: 76px; }
 }
