@@ -13,7 +13,7 @@ Live: https://ijkpokemon-production.up.railway.app
 | Route | Tab | Purpose |
 | --- | --- | --- |
 | `/` | ホーム / Home | Hero, why-us, founding story, main shop address |
-| `/supply.html` | 取扱商品 / Supply | The four formats we supply, order process, export tax note |
+| `/supply.html` | 取扱商品 / Supply | The three formats we supply, order process, export tax note |
 | `/team.html` | チーム / Team | Leadership, plus a separate note on the AI assistant |
 | `/contact.html` | お問い合わせ / Contact | Phone/LINE, email, address, hours, enquiry form |
 
@@ -53,8 +53,7 @@ labels), all from Google Fonts.
 ### Artwork
 
 `public/images/art/*.svg` are hand-built line drawings — a sealed box, a card
-fan, a graded slab, sleeves and binders — drawn to match the line weight of the
-IJKpokemon logo. They deliberately contain **no Pokémon artwork, card faces,
+fan and a graded slab — drawn to match the line weight of the IJKpokemon logo. They deliberately contain **no Pokémon artwork, card faces,
 logos or character names**, because the site is commercial and that material is
 The Pokémon Company's IP.
 

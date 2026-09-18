@@ -941,8 +941,8 @@ a { color: var(--clay-deep); text-decoration: none; }
 }
 .aside-card p { color: var(--ink-soft); font-size: 0.9rem; margin: 10px 0 0; }
 
-/* Supply page: four wide category cards, art-led */
-.grid-supply { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+/* Supply page: three wide category cards, art-led */
+.grid-supply { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
 /* Photo slot for the shop front — swap the inner note for an <img> */
 .photo-slot {
@@ -961,9 +961,10 @@ a { color: var(--clay-deep); text-decoration: none; }
 .photo-slot .note { font-size: 0.86rem; color: var(--clay-deep); margin: 0; }
 
 @media (max-width: 1100px) {
-  .grid-team, .grid-supply { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-team { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 960px) {
+  .grid-supply { grid-template-columns: 1fr; }
   .hero-grid { grid-template-columns: 1fr; gap: 36px; }
   .hero-art { order: -1; max-width: 340px; }
   .hero-inner { max-width: none; }
