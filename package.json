@@ -1,0 +1,14 @@
+{
+  "name": "ijk-pokemon-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "IJK Minamiaoyama — Japanese Pokemon TCG wholesale & export site",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {}
+}
