@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" role="img" aria-label="Single cards fanned out">
   <defs>
     <linearGradient id="cardA" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#fffaf6"/><stop offset="1" stop-color="#ffe3d2"/>
+      <stop offset="0" stop-color="#fdfaf5"/><stop offset="1" stop-color="#f1e6cf"/>
     </linearGradient>
   </defs>
-  <g fill="none" stroke="#c26a45" stroke-width="1.6" stroke-linejoin="round">
+  <g fill="none" stroke="#b8924f" stroke-width="1.6" stroke-linejoin="round">
     <g transform="rotate(-24 200 150)"><rect x="152" y="66" width="96" height="136" rx="8" fill="url(#cardA)" opacity=".8"/></g>
     <g transform="rotate(-8 200 150)"><rect x="152" y="60" width="96" height="136" rx="8" fill="url(#cardA)" opacity=".92"/></g>
     <g transform="rotate(10 200 150)">
-      <rect x="152" y="56" width="96" height="136" rx="8" fill="#fffaf6"/>
-      <rect x="162" y="66" width="76" height="62" rx="4" fill="#ffe3d2" opacity=".75"/>
+      <rect x="152" y="56" width="96" height="136" rx="8" fill="#fdfaf5"/>
+      <rect x="162" y="66" width="76" height="62" rx="4" fill="#f1e6cf" opacity=".75"/>
       <path d="M162 142h76" opacity=".45"/>
       <path d="M162 154h58" opacity=".3"/>
       <path d="M162 166h66" opacity=".3"/>

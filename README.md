@@ -13,8 +13,8 @@ Live: https://ijkpokemon-production.up.railway.app
 | Route | Tab | Purpose |
 | --- | --- | --- |
 | `/` | ホーム / Home | Hero, why-us, founding story, main shop address |
+| `/team.html` | チーム / Team | The four people who run it |
 | `/supply.html` | 取扱商品 / Supply | The three formats we supply, order process, export tax note |
-| `/team.html` | チーム / Team | Leadership, plus a separate note on the AI assistant |
 | `/contact.html` | お問い合わせ / Contact | Phone/LINE, email, address, hours, enquiry form |
 
 There is deliberately **no catalogue or price list** — stock moves daily and
@@ -44,11 +44,27 @@ That is the tradeoff for having no build step.
 
 ### Theme
 
-All colours are CSS custom properties at the top of `public/css/style.css`.
-Changing the palette values there re-skins the whole site.
+Warm ivory page, charcoal header and footer, gold accents, taken from the
+logo. The gold is unreadable on ivory (contrast is about 1.3:1), which is why
+the header and footer are dark: the real gold-on-black lockup then sits on the
+surface it was drawn for. All colours are CSS custom properties at the top of
+`public/css/style.css`.
 
 Fonts: Shippori Mincho (Japanese headings), Noto Sans JP (body), Jost (Latin
 labels), all from Google Fonts.
+
+### Logo assets
+
+`public/images/ijkpokemon-logo.webp` is the original supplied file, used as the
+Open Graph preview image.
+
+`logo-lockup.png` and `logo-mark.png` are derived from it: the gold is keyed off
+its black backdrop so the mark carries its own transparency. A flat luminance
+threshold leaves a visible rectangular halo, because the backdrop is a gradient
+running from 14 to 63 luminance while the gold peaks at 228. The key instead
+estimates the backdrop per pixel (median-filter a downscaled copy, which erases
+the thin strokes, then scale it back up) and subtracts that. If you ever re-cut
+these from a new logo file, reuse that approach.
 
 ### Artwork
 
@@ -81,7 +97,9 @@ background — the gold gradient would be near-invisible on peach.
 - **Second Japanese address** — the site says "a second location in Japan" on
   the home page without naming it; only the Minamiaoyama address is published
 - **Form backend** — the form opens the visitor's mail app. Point it at a real
-  endpoint in `public/js/contact-form.js`
+  endpoint in `public/js/contact-form.js`. The product choice is a checkbox
+  group (buyers routinely want more than one format), so read all checked
+  `interest` values, not a single one
 - **Custom domain** — `robots.txt` and `sitemap.xml` currently point at the
   Railway subdomain
 
