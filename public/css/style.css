@@ -603,17 +603,21 @@ a { color: var(--gold-deep); text-decoration: none; }
    ball motif, so the card reads as designed rather than as a gap. */
 .member-photo .ball {
   position: absolute;
-  width: 74%; height: auto;
+  /* Capped so the inner ring keeps clear of the monogram at every card
+     width; without the cap it scales up and crowds the letters. */
+  width: 82%;
+  max-width: 236px;
+  height: auto;
   color: var(--gold-soft);
-  opacity: .34;
+  opacity: .3;
 }
 .member-photo .initials {
   position: relative;
   font-family: var(--jp-serif);
-  font-size: 2.1rem;
+  font-size: 2.2rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
-  color: #f0e2bd;
+  letter-spacing: 0.12em;
+  color: #f4e8c6;
   padding-left: 0.14em;
 }
 .member-body { padding: 24px 24px 28px; }
@@ -897,8 +901,14 @@ a { color: var(--gold-deep); text-decoration: none; }
 .footer-brand { margin-bottom: 16px; }
 .footer-brand img { height: 30px; width: auto; display: block; }
 
-/* Four-across leadership row that drops to 2 then 1 */
-.grid-team { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+/* Founders sit three across; the two directors below keep that exact card
+   width (two columns of a three-column track) and centre under them. */
+.grid-founders { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-directors {
+  grid-template-columns: repeat(2, minmax(0, calc((100% - 48px) / 3)));
+  justify-content: center;
+  margin-top: 24px;
+}
 
 /* Supply page: three wide category cards, art-led */
 .grid-supply { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -920,7 +930,8 @@ a { color: var(--gold-deep); text-decoration: none; }
 .photo-slot .note { font-size: 0.86rem; color: var(--gold-deep); margin: 0; }
 
 @media (max-width: 1100px) {
-  .grid-team { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-founders { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-directors { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 960px) {
   .grid-supply { grid-template-columns: 1fr; }
@@ -929,7 +940,7 @@ a { color: var(--gold-deep); text-decoration: none; }
   .hero-inner { max-width: none; }
 }
 @media (max-width: 600px) {
-  .grid-team, .grid-supply { grid-template-columns: 1fr; }
+  .grid-founders, .grid-directors, .grid-supply { grid-template-columns: 1fr; }
 }
 
 /* ==========================================================================

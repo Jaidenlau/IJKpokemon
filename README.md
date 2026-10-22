@@ -13,7 +13,7 @@ Live: https://ijkpokemon-production.up.railway.app
 | Route | Tab | Purpose |
 | --- | --- | --- |
 | `/` | ホーム / Home | Hero, why-us, founding story, main shop address |
-| `/team.html` | チーム / Team | The four people who run it |
+| `/team.html` | チーム / Team | Three founders in a row, two directors below |
 | `/supply.html` | 取扱商品 / Supply | The three formats we supply, order process, export tax note |
 | `/contact.html` | お問い合わせ / Contact | Phone/LINE, email, address, hours, enquiry form |
 
@@ -53,6 +53,20 @@ surface it was drawn for. All colours are CSS custom properties at the top of
 Fonts: Shippori Mincho (Japanese headings), Noto Sans JP (body), Jost (Latin
 labels), all from Google Fonts.
 
+### Icons and link previews
+
+Google ignores a `data:` URI favicon, which is why the search result showed
+Railway's globe instead of the mark. The icons are now real files at the site
+root, declared with `<link rel="icon">`:
+
+`favicon.ico` (16/32/48), `apple-touch-icon.png`, `icon-192.png`,
+`icon-512.png`, `site.webmanifest`, and `og-image.png` (1200x630) for link
+previews. All are generated from `logo-lockup.png`; the script lives in the
+commit that added them.
+
+Google re-crawls on its own schedule, so the favicon can take days to a couple
+of weeks to appear. Requesting indexing in Search Console speeds it up.
+
 ### Logo assets
 
 `public/images/ijkpokemon-logo.webp` is the original supplied file, used as the
@@ -65,6 +79,10 @@ running from 14 to 63 luminance while the gold peaks at 228. The key instead
 estimates the backdrop per pixel (median-filter a downscaled copy, which erases
 the thin strokes, then scale it back up) and subtracts that. If you ever re-cut
 these from a new logo file, reuse that approach.
+
+Pillow is needed for that work and is not preinstalled. Note that `pip` here
+installs for Python 3.13 while `python3` is 3.11, so run such scripts with
+`python3.13`.
 
 ### Artwork
 
@@ -92,6 +110,9 @@ background — the gold gradient would be near-invisible on peach.
 
 - **Opening hours** — `contact.html`, currently 11:00–20:00 weekdays, marked as
   placeholder on the page itself
+- **Idan's surname and bio** — the card reads just "Idan" with a one-line bio,
+  and the monogram is a single "I". Given Jaiden and Kaiden are both Lau this is
+  probably "Idan Lau", but it is not assumed
 - **Team portraits** — monogram tiles stand in; the tiles are designed to look
   intentional, so there is no rush
 - **Second Japanese address** — the site says "a second location in Japan" on

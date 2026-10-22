@@ -1,0 +1,12 @@
+{
+  "name": "IJKpokemon",
+  "short_name": "IJKpokemon",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#191713",
+  "background_color": "#fdfaf5",
+  "display": "standalone",
+  "start_url": "/"
+}
